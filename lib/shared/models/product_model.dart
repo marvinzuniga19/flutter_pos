@@ -5,6 +5,10 @@ class Product {
   final double ivaRate;
   final bool ivaExempt;
   final String unit;
+  final String? imagePath;
+  final String? category;
+  final int stock;
+  final String? barcode;
 
   Product({
     required this.id,
@@ -13,6 +17,10 @@ class Product {
     this.ivaRate = 0.15, // IVA Nicaragua 15%
     this.ivaExempt = false,
     this.unit = 'unidad',
+    this.imagePath,
+    this.category,
+    this.stock = 0,
+    this.barcode,
   });
 
   double get ivaAmount => ivaExempt ? 0.0 : (price * ivaRate);
@@ -22,6 +30,9 @@ class Product {
   String get formattedIva => 'C\$${ivaAmount.toStringAsFixed(2)}';
   String get formattedTotal => 'C\$${total.toStringAsFixed(2)}';
 
+  bool get hasImage => imagePath != null && imagePath!.isNotEmpty;
+  bool get inStock => stock > 0;
+
   Product copyWith({
     String? id,
     String? name,
@@ -29,6 +40,10 @@ class Product {
     double? ivaRate,
     bool? ivaExempt,
     String? unit,
+    String? imagePath,
+    String? category,
+    int? stock,
+    String? barcode,
   }) {
     return Product(
       id: id ?? this.id,
@@ -37,6 +52,10 @@ class Product {
       ivaRate: ivaRate ?? this.ivaRate,
       ivaExempt: ivaExempt ?? this.ivaExempt,
       unit: unit ?? this.unit,
+      imagePath: imagePath ?? this.imagePath,
+      category: category ?? this.category,
+      stock: stock ?? this.stock,
+      barcode: barcode ?? this.barcode,
     );
   }
 }

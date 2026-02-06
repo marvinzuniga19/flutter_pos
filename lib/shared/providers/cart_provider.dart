@@ -1,4 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/cart_model.dart';
 import '../models/cart_item_model.dart';
 import '../models/product_model.dart';
@@ -130,19 +131,19 @@ class CartNotifier extends _$CartNotifier {
 }
 
 @riverpod
-int cartItemCount(CartItemCountRef ref) {
+int cartItemCount(Ref ref) {
   final cart = ref.watch(cartNotifierProvider);
   return cart.totalItems;
 }
 
 @riverpod
-bool cartIsEmpty(CartIsEmptyRef ref) {
+bool cartIsEmpty(Ref ref) {
   final cart = ref.watch(cartNotifierProvider);
   return cart.isEmpty;
 }
 
 @riverpod
-double cartGrandTotal(CartGrandTotalRef ref) {
+double cartGrandTotal(Ref ref) {
   final cart = ref.watch(cartNotifierProvider);
   return cart.grandTotal;
 }
