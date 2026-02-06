@@ -68,7 +68,10 @@ class _DesktopLayout extends ConsumerWidget {
               ],
             ),
           ),
-          Container(width: 1, color: colorScheme.outline.withOpacity(0.2)),
+          Container(
+            width: 1,
+            color: colorScheme.outline.withValues(alpha: 0.2),
+          ),
           SizedBox(
             width:
                 CartConstants.cartPanelDesktopWidthRatio *
@@ -113,7 +116,7 @@ class _CustomerSelectionSection extends ConsumerWidget {
         color: colorScheme.surface,
         border: Border(
           bottom: BorderSide(
-            color: colorScheme.outline.withOpacity(0.2),
+            color: colorScheme.outline.withValues(alpha: 0.2),
             width: 1,
           ),
         ),
@@ -138,7 +141,7 @@ class _CustomerSelectionSection extends ConsumerWidget {
                   style: theme.textTheme.bodyMedium?.copyWith(
                     color: selectedCustomer != null
                         ? colorScheme.onSurface
-                        : colorScheme.onSurface.withOpacity(0.6),
+                        : colorScheme.onSurface.withValues(alpha: 0.6),
                   ),
                 ),
                 if (selectedCustomer?.displayInfo != null) ...[
@@ -146,7 +149,7 @@ class _CustomerSelectionSection extends ConsumerWidget {
                   Text(
                     selectedCustomer!.displayInfo!,
                     style: theme.textTheme.bodySmall?.copyWith(
-                      color: colorScheme.onSurface.withOpacity(0.6),
+                      color: colorScheme.onSurface.withValues(alpha: 0.6),
                     ),
                   ),
                 ],
@@ -155,7 +158,7 @@ class _CustomerSelectionSection extends ConsumerWidget {
           ),
           TextButton.icon(
             onPressed: () => _showCustomerSelectionModal(context),
-            icon: const Icon(Icons.search, size: 18),
+            icon: Icon(Icons.search, size: 18),
             label: Text(selectedCustomer != null ? 'Cambiar' : 'Seleccionar'),
             style: TextButton.styleFrom(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -241,7 +244,9 @@ class _MobileLayoutState extends ConsumerState<_MobileLayout>
                 Tab(icon: Icon(Icons.shopping_cart), text: 'Carrito'),
               ],
               labelColor: colorScheme.primary,
-              unselectedLabelColor: colorScheme.onSurface.withOpacity(0.6),
+              unselectedLabelColor: colorScheme.onSurface.withValues(
+                alpha: 0.6,
+              ),
               indicatorColor: colorScheme.primary,
             ),
           ),
@@ -277,7 +282,7 @@ class _CartHeader extends StatelessWidget {
         color: colorScheme.primaryContainer,
         border: Border(
           bottom: BorderSide(
-            color: colorScheme.outline.withOpacity(0.2),
+            color: colorScheme.outline.withValues(alpha: 0.2),
             width: 1,
           ),
         ),
@@ -300,7 +305,9 @@ class _CartHeader extends StatelessWidget {
                 Text(
                   '${cart.totalItems} items • ${cart.formattedGrandTotal}',
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    color: colorScheme.onPrimaryContainer.withOpacity(0.8),
+                    color: colorScheme.onPrimaryContainer.withValues(
+                      alpha: 0.8,
+                    ),
                   ),
                 ),
               ],
@@ -360,13 +367,13 @@ class _EmptyCartState extends StatelessWidget {
           Icon(
             Icons.shopping_cart_outlined,
             size: 80,
-            color: colorScheme.onSurface.withOpacity(0.3),
+            color: colorScheme.onSurface.withValues(alpha: 0.3),
           ),
           const SizedBox(height: 16),
           Text(
             CartConstants.cartEmptyMessage,
             style: theme.textTheme.titleLarge?.copyWith(
-              color: colorScheme.onSurface.withOpacity(0.6),
+              color: colorScheme.onSurface.withValues(alpha: 0.6),
             ),
             textAlign: TextAlign.center,
           ),
@@ -374,7 +381,7 @@ class _EmptyCartState extends StatelessWidget {
           Text(
             CartConstants.cartEmptySubMessage,
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: colorScheme.onSurface.withOpacity(0.4),
+              color: colorScheme.onSurface.withValues(alpha: 0.4),
             ),
             textAlign: TextAlign.center,
           ),

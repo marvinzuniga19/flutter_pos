@@ -3,9 +3,7 @@ import 'package:pos/presentation/products_screen.dart';
 import 'package:pos/presentation/sales_screen.dart';
 
 class MainLayout extends StatefulWidget {
-  const MainLayout({super.key, this.child});
-
-  final Widget? child;
+  const MainLayout({super.key});
 
   @override
   State<MainLayout> createState() => _MainLayoutState();
@@ -34,9 +32,6 @@ class _MainLayoutState extends State<MainLayout> {
     final isDesktop = MediaQuery.of(context).size.width >= 800;
 
     return Scaffold(
-      // We remove the AppBar here as we might want individual screens to control it,
-      // or a global one. For a POS, usually the content area dominates.
-      // But let's keep a simple dynamic one if needed.
       appBar: AppBar(
         title: const Text('POS Nicaragua'),
         centerTitle: false,
@@ -158,7 +153,7 @@ class PlaceholderScreen extends StatelessWidget {
           Icon(
             icon,
             size: 80,
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+            color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.5),
           ),
           const SizedBox(height: 16),
           Text(
@@ -171,7 +166,9 @@ class PlaceholderScreen extends StatelessWidget {
           Text(
             'Próximamente',
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+              color: Theme.of(
+                context,
+              ).colorScheme.onSurface.withValues(alpha: 0.6),
             ),
           ),
         ],

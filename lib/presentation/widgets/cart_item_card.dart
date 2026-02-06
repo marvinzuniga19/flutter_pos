@@ -59,7 +59,7 @@ class CartItemCard extends ConsumerWidget {
                         Text(
                           cartItem.product.formattedPrice,
                           style: theme.textTheme.bodyMedium?.copyWith(
-                            color: colorScheme.onSurface.withOpacity(0.7),
+                            color: colorScheme.onSurface.withValues(alpha: 0.7),
                           ),
                         ),
                         if (cartItem.product.ivaExempt) ...[
@@ -113,7 +113,7 @@ class CartItemCard extends ConsumerWidget {
                       Text(
                         'Subtotal:',
                         style: theme.textTheme.bodySmall?.copyWith(
-                          color: colorScheme.onSurface.withOpacity(0.6),
+                          color: colorScheme.onSurface.withValues(alpha: 0.6),
                         ),
                       ),
                       Text(
@@ -132,7 +132,7 @@ class CartItemCard extends ConsumerWidget {
                         Text(
                           'IVA (15%):',
                           style: theme.textTheme.bodySmall?.copyWith(
-                            color: colorScheme.onSurface.withOpacity(0.6),
+                            color: colorScheme.onSurface.withValues(alpha: 0.6),
                           ),
                         ),
                         Text(
@@ -149,7 +149,10 @@ class CartItemCard extends ConsumerWidget {
                 ],
               ),
               const SizedBox(height: 8),
-              Container(height: 1, color: colorScheme.outline.withOpacity(0.2)),
+              Container(
+                height: 1,
+                color: colorScheme.outline.withValues(alpha: 0.2),
+              ),
               const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -243,7 +243,7 @@ class AppTheme {
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-          side: BorderSide(color: Colors.white.withOpacity(0.05)),
+          side: BorderSide(color: Colors.white.withValues(alpha: 0.05)),
         ),
         margin: const EdgeInsets.all(8),
       ),
@@ -306,7 +306,7 @@ class AppTheme {
       // Navigation Bar (Modern)
       navigationBarTheme: NavigationBarThemeData(
         backgroundColor: darkSurfaceColor,
-        indicatorColor: darkPrimaryColor.withOpacity(0.2),
+        indicatorColor: darkPrimaryColor.withValues(alpha: 0.2),
         labelTextStyle: WidgetStateProperty.all(
           GoogleFonts.outfit(fontSize: 12, fontWeight: FontWeight.w500),
         ),

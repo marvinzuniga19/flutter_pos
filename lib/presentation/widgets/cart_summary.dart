@@ -59,7 +59,7 @@ class CartSummary extends ConsumerWidget {
             const SizedBox(height: CartConstants.cartSummarySpacing),
             Divider(
               thickness: CartConstants.cartSummaryDividerThickness,
-              color: colorScheme.outline.withOpacity(0.2),
+              color: colorScheme.outline.withValues(alpha: 0.2),
             ),
             const SizedBox(height: CartConstants.cartSummarySpacing),
 
@@ -73,7 +73,7 @@ class CartSummary extends ConsumerWidget {
             const SizedBox(height: CartConstants.cartSummarySpacing),
             Divider(
               thickness: CartConstants.cartSummaryDividerThickness,
-              color: colorScheme.outline.withOpacity(0.2),
+              color: colorScheme.outline.withValues(alpha: 0.2),
             ),
             const SizedBox(height: CartConstants.cartSummarySpacing),
 
@@ -112,13 +112,13 @@ class _EmptyCartSummary extends StatelessWidget {
             Icon(
               Icons.shopping_cart_outlined,
               size: 64,
-              color: colorScheme.onSurface.withOpacity(0.3),
+              color: colorScheme.onSurface.withValues(alpha: 0.3),
             ),
             const SizedBox(height: 16),
             Text(
               CartConstants.cartEmptyMessage,
               style: theme.textTheme.titleLarge?.copyWith(
-                color: colorScheme.onSurface.withOpacity(0.6),
+                color: colorScheme.onSurface.withValues(alpha: 0.6),
               ),
               textAlign: TextAlign.center,
             ),
@@ -126,7 +126,7 @@ class _EmptyCartSummary extends StatelessWidget {
             Text(
               CartConstants.cartEmptySubMessage,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: colorScheme.onSurface.withOpacity(0.4),
+                color: colorScheme.onSurface.withValues(alpha: 0.4),
               ),
               textAlign: TextAlign.center,
             ),

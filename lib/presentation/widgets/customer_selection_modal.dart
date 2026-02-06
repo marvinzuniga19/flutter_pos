@@ -106,7 +106,7 @@ class _CustomerSelectionModalState
                       ? 'Seleccionado: ${_selectedCustomer!.name}'
                       : 'Selecciona un cliente o continúa sin cliente',
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    color: colorScheme.onSurface.withOpacity(0.7),
+                    color: colorScheme.onSurface.withValues(alpha: 0.7),
                   ),
                 ),
               ],
@@ -206,20 +206,20 @@ class _CustomerSelectionModalState
           Icon(
             Icons.search,
             size: 64,
-            color: colorScheme.onSurface.withOpacity(0.3),
+            color: colorScheme.onSurface.withValues(alpha: 0.3),
           ),
           const SizedBox(height: 16),
           Text(
             'Busca un cliente',
             style: theme.textTheme.titleLarge?.copyWith(
-              color: colorScheme.onSurface.withOpacity(0.6),
+              color: colorScheme.onSurface.withValues(alpha: 0.6),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Usa el campo de búsqueda para encontrar clientes por nombre, RUC o teléfono',
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: colorScheme.onSurface.withOpacity(0.4),
+              color: colorScheme.onSurface.withValues(alpha: 0.4),
             ),
             textAlign: TextAlign.center,
           ),
@@ -246,20 +246,20 @@ class _CustomerSelectionModalState
           Icon(
             Icons.search_off,
             size: 64,
-            color: colorScheme.onSurface.withOpacity(0.3),
+            color: colorScheme.onSurface.withValues(alpha: 0.3),
           ),
           const SizedBox(height: 16),
           Text(
             CustomerConstants.customerNoResults,
             style: theme.textTheme.titleLarge?.copyWith(
-              color: colorScheme.onSurface.withOpacity(0.6),
+              color: colorScheme.onSurface.withValues(alpha: 0.6),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'No se encontraron clientes que coincidan con tu búsqueda',
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: colorScheme.onSurface.withOpacity(0.4),
+              color: colorScheme.onSurface.withValues(alpha: 0.4),
             ),
             textAlign: TextAlign.center,
           ),

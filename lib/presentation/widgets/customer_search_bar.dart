@@ -65,14 +65,16 @@ class _CustomerSearchBarState extends ConsumerState<CustomerSearchBar> {
             borderRadius: BorderRadius.circular(
               CustomerConstants.customerSearchBarRadius,
             ),
-            border: Border.all(color: colorScheme.outline.withOpacity(0.3)),
+            border: Border.all(
+              color: colorScheme.outline.withValues(alpha: 0.3),
+            ),
           ),
           child: Row(
             children: [
               const SizedBox(width: 16),
               Icon(
                 Icons.search,
-                color: colorScheme.onSurface.withOpacity(0.6),
+                color: colorScheme.onSurface.withValues(alpha: 0.6),
                 size: 20,
               ),
               const SizedBox(width: 12),
@@ -85,7 +87,7 @@ class _CustomerSearchBarState extends ConsumerState<CustomerSearchBar> {
                         widget.hintText ?? CustomerConstants.customerSearchHint,
                     border: InputBorder.none,
                     hintStyle: TextStyle(
-                      color: colorScheme.onSurface.withOpacity(0.6),
+                      color: colorScheme.onSurface.withValues(alpha: 0.6),
                     ),
                   ),
                   onChanged: (value) {
@@ -104,7 +106,7 @@ class _CustomerSearchBarState extends ConsumerState<CustomerSearchBar> {
                   onPressed: _clearSearch,
                   icon: Icon(
                     Icons.clear,
-                    color: colorScheme.onSurface.withOpacity(0.6),
+                    color: colorScheme.onSurface.withValues(alpha: 0.6),
                     size: 20,
                   ),
                   tooltip: 'Limpiar búsqueda',
@@ -115,13 +117,13 @@ class _CustomerSearchBarState extends ConsumerState<CustomerSearchBar> {
                 Container(
                   height: 40,
                   width: 1,
-                  color: colorScheme.outline.withOpacity(0.3),
+                  color: colorScheme.outline.withValues(alpha: 0.3),
                 ),
                 IconButton(
                   onPressed: _toggleFilters,
                   icon: Icon(
                     _showFilters ? Icons.filter_list_off : Icons.filter_list,
-                    color: colorScheme.onSurface.withOpacity(0.6),
+                    color: colorScheme.onSurface.withValues(alpha: 0.6),
                     size: 20,
                   ),
                   tooltip: 'Filtros',
@@ -256,9 +258,9 @@ class _FilterSection extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: colorScheme.surfaceVariant.withOpacity(0.3),
+        color: colorScheme.surfaceVariant.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: colorScheme.outline.withOpacity(0.2)),
+        border: Border.all(color: colorScheme.outline.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -395,7 +397,7 @@ class _FilterDropdown<T> extends StatelessWidget {
               hint: Text(
                 'Todos',
                 style: theme.textTheme.bodyMedium?.copyWith(
-                  color: colorScheme.onSurface.withOpacity(0.6),
+                  color: colorScheme.onSurface.withValues(alpha: 0.6),
                 ),
               ),
               items: [
@@ -530,7 +532,7 @@ class _SearchResultsList extends StatelessWidget {
       decoration: BoxDecoration(
         color: colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: colorScheme.outline.withOpacity(0.2)),
+        border: Border.all(color: colorScheme.outline.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -540,11 +542,11 @@ class _SearchResultsList extends StatelessWidget {
             child: Text(
               '${results.length} resultados encontrados',
               style: theme.textTheme.bodySmall?.copyWith(
-                color: colorScheme.onSurface.withOpacity(0.6),
+                color: colorScheme.onSurface.withValues(alpha: 0.6),
               ),
             ),
           ),
-          Divider(height: 1, color: colorScheme.outline.withOpacity(0.2)),
+          Divider(height: 1, color: colorScheme.outline.withValues(alpha: 0.2)),
           ...results.map(
             (customer) => _SearchResultItem(
               customer: customer,
@@ -576,7 +578,7 @@ class _SearchResultItem extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 20,
-              backgroundColor: AppTheme.customerColor.withOpacity(0.1),
+              backgroundColor: AppTheme.customerColor.withValues(alpha: 0.1),
               child: Icon(
                 Icons.person,
                 color: AppTheme.customerColor,
@@ -599,7 +601,7 @@ class _SearchResultItem extends StatelessWidget {
                     Text(
                       customer.displayInfo!,
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color: colorScheme.onSurface.withOpacity(0.6),
+                        color: colorScheme.onSurface.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
@@ -609,7 +611,7 @@ class _SearchResultItem extends StatelessWidget {
             Icon(
               Icons.arrow_forward_ios,
               size: 16,
-              color: colorScheme.onSurface.withOpacity(0.4),
+              color: colorScheme.onSurface.withValues(alpha: 0.4),
             ),
           ],
         ),
@@ -637,7 +639,7 @@ class _RecentSearchesSection extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: colorScheme.surfaceVariant.withOpacity(0.3),
+        color: colorScheme.surfaceVariant.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -669,7 +671,7 @@ class _RecentSearchesSection extends StatelessWidget {
                     onPressed: () => onSearchSelected(search),
                     backgroundColor: colorScheme.surface,
                     side: BorderSide(
-                      color: colorScheme.outline.withOpacity(0.3),
+                      color: colorScheme.outline.withValues(alpha: 0.3),
                     ),
                   ),
                 )

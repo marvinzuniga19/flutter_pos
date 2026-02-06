@@ -85,9 +85,9 @@ class _NoCreditInfo extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: colorScheme.surfaceVariant.withOpacity(0.3),
+        color: colorScheme.surfaceVariant.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: colorScheme.outline.withOpacity(0.2)),
+        border: Border.all(color: colorScheme.outline.withValues(alpha: 0.2)),
       ),
       child: Row(
         children: [
@@ -177,7 +177,7 @@ class _CreditHeader extends StatelessWidget {
                         vertical: 2,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.red.withOpacity(0.1),
+                        color: Colors.red.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
@@ -298,9 +298,9 @@ class _CreditMetricCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: color.withOpacity(0.3)),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -343,7 +343,7 @@ class _CreditDetails extends StatelessWidget {
       decoration: BoxDecoration(
         color: colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: colorScheme.outline.withOpacity(0.2)),
+        border: Border.all(color: colorScheme.outline.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -455,7 +455,7 @@ class _CreditDetailRow extends StatelessWidget {
         Text(
           label,
           style: theme.textTheme.bodyMedium?.copyWith(
-            color: colorScheme.onSurface.withOpacity(0.7),
+            color: colorScheme.onSurface.withValues(alpha: 0.7),
           ),
         ),
         Row(
@@ -538,7 +538,9 @@ class _RecentTransactions extends StatelessWidget {
           decoration: BoxDecoration(
             color: colorScheme.surface,
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: colorScheme.outline.withOpacity(0.2)),
+            border: Border.all(
+              color: colorScheme.outline.withValues(alpha: 0.2),
+            ),
           ),
           child: Column(
             children: transactions
@@ -580,7 +582,7 @@ class _TransactionItem extends StatelessWidget {
                 radius: 16,
                 backgroundColor: _getTransactionColor(
                   transaction.type,
-                ).withOpacity(0.1),
+                ).withValues(alpha: 0.1),
                 child: Icon(
                   _getTransactionIcon(transaction.type),
                   color: _getTransactionColor(transaction.type),
@@ -604,7 +606,7 @@ class _TransactionItem extends StatelessWidget {
                         Text(
                           transaction.typeDisplayName,
                           style: theme.textTheme.bodySmall?.copyWith(
-                            color: colorScheme.onSurface.withOpacity(0.6),
+                            color: colorScheme.onSurface.withValues(alpha: 0.6),
                           ),
                         ),
                         if (transaction.paymentMethod != null) ...[
@@ -612,14 +614,18 @@ class _TransactionItem extends StatelessWidget {
                           Text(
                             '•',
                             style: theme.textTheme.bodySmall?.copyWith(
-                              color: colorScheme.onSurface.withOpacity(0.4),
+                              color: colorScheme.onSurface.withValues(
+                                alpha: 0.4,
+                              ),
                             ),
                           ),
                           const SizedBox(width: 8),
                           Text(
                             transaction.paymentMethodDisplayName,
                             style: theme.textTheme.bodySmall?.copyWith(
-                              color: colorScheme.onSurface.withOpacity(0.6),
+                              color: colorScheme.onSurface.withValues(
+                                alpha: 0.6,
+                              ),
                             ),
                           ),
                         ],
@@ -642,7 +648,7 @@ class _TransactionItem extends StatelessWidget {
                   Text(
                     _formatDate(transaction.createdAt),
                     style: theme.textTheme.bodySmall?.copyWith(
-                      color: colorScheme.onSurface.withOpacity(0.6),
+                      color: colorScheme.onSurface.withValues(alpha: 0.6),
                     ),
                   ),
                 ],
@@ -651,7 +657,7 @@ class _TransactionItem extends StatelessWidget {
           ),
         ),
         if (showDivider)
-          Divider(height: 1, color: colorScheme.outline.withOpacity(0.2)),
+          Divider(height: 1, color: colorScheme.outline.withValues(alpha: 0.2)),
       ],
     );
   }
@@ -710,7 +716,7 @@ class _OverdueAlert extends StatelessWidget {
       decoration: BoxDecoration(
         color: colorScheme.errorContainer,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: colorScheme.error.withOpacity(0.3)),
+        border: Border.all(color: colorScheme.error.withValues(alpha: 0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

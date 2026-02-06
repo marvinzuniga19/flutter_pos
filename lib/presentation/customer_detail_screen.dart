@@ -255,7 +255,9 @@ class _CustomerHeaderCard extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 32,
-                    backgroundColor: AppTheme.customerColor.withOpacity(0.1),
+                    backgroundColor: AppTheme.customerColor.withValues(
+                      alpha: 0.1,
+                    ),
                     child: Icon(
                       Icons.person,
                       color: AppTheme.customerColor,
@@ -300,7 +302,9 @@ class _CustomerHeaderCard extends StatelessWidget {
                   width: double.infinity,
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: colorScheme.surfaceVariant.withOpacity(0.5),
+                    color: colorScheme.surfaceContainerHighest.withValues(
+                      alpha: 0.5,
+                    ),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(

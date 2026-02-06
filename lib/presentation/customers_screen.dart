@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../shared/models/customer_model.dart';
 import '../../shared/providers/customer_provider.dart';
-import '../../shared/providers/customer_credit_provider.dart';
 import 'widgets/customer_search_bar.dart';
 import 'widgets/customer_card.dart';
 import 'widgets/customer_selection_modal.dart';
@@ -77,7 +76,9 @@ class _CustomersScreenState extends ConsumerState<CustomersScreen>
                 Tab(text: 'Vencidos', icon: Icon(Icons.warning)),
               ],
               labelColor: AppTheme.customerColor,
-              unselectedLabelColor: colorScheme.onSurface.withOpacity(0.6),
+              unselectedLabelColor: colorScheme.onSurface.withValues(
+                alpha: 0.6,
+              ),
               indicatorColor: AppTheme.customerColor,
             ),
           ),
@@ -175,9 +176,9 @@ class _CustomersScreenState extends ConsumerState<CustomersScreen>
       height: 120.0,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: color.withOpacity(0.3)),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -258,20 +259,20 @@ class _CustomersScreenState extends ConsumerState<CustomersScreen>
           Icon(
             Icons.people_outline,
             size: 80,
-            color: colorScheme.onSurface.withOpacity(0.3),
+            color: colorScheme.onSurface.withValues(alpha: 0.3),
           ),
           const SizedBox(height: 16),
           Text(
             CustomerConstants.customerEmptyMessage,
             style: theme.textTheme.titleLarge?.copyWith(
-              color: colorScheme.onSurface.withOpacity(0.6),
+              color: colorScheme.onSurface.withValues(alpha: 0.6),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'No hay clientes que coincidan con los filtros seleccionados',
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: colorScheme.onSurface.withOpacity(0.4),
+              color: colorScheme.onSurface.withValues(alpha: 0.4),
             ),
             textAlign: TextAlign.center,
           ),

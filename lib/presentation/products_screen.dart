@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../shared/models/product_model.dart';
 import '../shared/providers/cart_provider.dart';
 import '../shared/providers/product_provider.dart';
-import '../presentation/product_form_screen.dart';
+import 'product_form_screen.dart';
 import '../core/constants/cart_constants.dart';
 import '../core/constants/product_constants.dart';
 

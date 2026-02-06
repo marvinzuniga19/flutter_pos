@@ -44,7 +44,6 @@ class CartConstants {
   static const double cartSummarySpacing = 8.0;
   static const double cartSummaryDividerThickness = 1.0;
 
-  static const String cartItemNameMaxLines = '2';
   static const double cartItemNameFontSize = 14.0;
   static const double cartItemPriceFontSize = 16.0;
   static const double cartItemTotalFontSize = 18.0;
@@ -57,31 +56,6 @@ class CartConstants {
   static const double cartAnimationOpacity = 0.8;
 
   static const int desktopBreakpoint = 800;
-  static const int tabletBreakpoint = 600;
-  static const int mobileBreakpoint = 400;
 
   static const double cartPanelDesktopWidthRatio = 0.35;
-  static const double cartPanelTabletWidthRatio = 0.4;
-  static const double cartPanelMobileWidthRatio = 0.9;
-
-  static const String cartPersistenceKey = 'pos_cart_data';
-  static const String cartLastActivityKey = 'pos_cart_last_activity';
-
-  static const Duration cartAutoClearTimeout = Duration(hours: 24);
-  static const Duration cartPersistenceDebounce = Duration(seconds: 1);
-
-  static const double minOrderAmount = 0.0;
-  static const double maxOrderAmount = 50000.0;
-
-  static const List<String> restrictedProductCategories = [
-    'tobacco',
-    'alcohol',
-    'pharmaceutical',
-  ];
-
-  static const Map<String, int> categoryQuantityLimits = {
-    'tobacco': 10,
-    'alcohol': 20,
-    'pharmaceutical': 5,
-  };
 }
