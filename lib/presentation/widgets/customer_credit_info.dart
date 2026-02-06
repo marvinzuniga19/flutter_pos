@@ -24,7 +24,6 @@ class CustomerCreditInfo extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
     final customerCredit = ref.watch(customerCreditProvider(customer.id));
     final transactions = ref.watch(
       customerTransactionHistoryProvider(customer.id),
@@ -137,7 +136,6 @@ class _CreditHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
 
     return Row(
       children: [
@@ -293,7 +291,6 @@ class _CreditMetricCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
 
     return Container(
       padding: const EdgeInsets.all(12),
@@ -822,7 +819,6 @@ class _EditCreditLimitDialogState extends State<_EditCreditLimitDialog> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
 
     return AlertDialog(
       title: Text('Editar Límite de Crédito'),

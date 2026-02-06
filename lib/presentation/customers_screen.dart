@@ -170,7 +170,6 @@ class _CustomersScreenState extends ConsumerState<CustomersScreen>
     required Color color,
   }) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
 
     return Container(
       height: 120.0,

@@ -21,8 +21,6 @@ class SalesScreen extends ConsumerStatefulWidget {
 class _SalesScreenState extends ConsumerState<SalesScreen> {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
     final cart = ref.watch(cartNotifierProvider);
     final isDesktop =
         MediaQuery.of(context).size.width >= CartConstants.desktopBreakpoint;

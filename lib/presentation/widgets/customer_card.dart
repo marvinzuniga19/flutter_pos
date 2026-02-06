@@ -26,8 +26,6 @@ class CustomerCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
     final customerCredit = ref.watch(customerCreditProvider(customer.id));
 
     return Card(
@@ -272,7 +270,6 @@ class _CreditInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
 
     return Container(
       padding: const EdgeInsets.all(12),

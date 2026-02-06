@@ -7,13 +7,14 @@
 
 // Flutter test
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:pos/main.dart';
 
 void main() {
   testWidgets('App smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    // Build our app and trigger a frame with ProviderScope
+    await tester.pumpWidget(const ProviderScope(child: MyApp()));
 
     // Verify that the app title is present.
     expect(find.text('Catálogo'), findsOneWidget);

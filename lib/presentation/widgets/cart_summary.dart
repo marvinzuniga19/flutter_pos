@@ -145,7 +145,6 @@ class _ItemsSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -455,9 +454,6 @@ class _DiscountDialogState extends State<DiscountDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-
     return AlertDialog(
       title: const Text('Aplicar Descuento'),
       content: Form(

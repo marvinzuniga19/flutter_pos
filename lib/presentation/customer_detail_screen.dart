@@ -16,233 +16,6 @@ class CustomerDetailScreen extends ConsumerWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(customer.name),
-        backgroundColor: colorScheme.surface,
-        foregroundColor: colorScheme.onSurface,
-        elevation: 0,
-        actions: [
-          IconButton(
-            onPressed: () => _editCustomer(context, ref),
-            icon: const Icon(Icons.edit_outlined),
-            tooltip: 'Editar cliente',
-          ),
-          PopupMenuButton(
-            icon: const Icon(Icons.more_vert),
-            itemBuilder: (context) => [
-              PopupMenuItem(
-                value: 'edit',
-                child: Row(
-                  children: [
-                    const Icon(Icons.edit_outlined),
-                    const SizedBox(width: 8),
-                    Text('Editar'),
-                  ],
-                ),
-              ),
-              PopupMenuItem(
-                value: 'credit',
-                child: Row(
-                  children: [
-                    const Icon(Icons.account_balance),
-                    const SizedBox(width: 8),
-                    Text('Gestionar Crédito'),
-                  ],
-                ),
-              ),
-              PopupMenuItem(
-                value: 'history',
-                child: Row(
-                  children: [
-                    const Icon(Icons.history),
-                    const SizedBox(width: 8),
-                    Text('Historial'),
-                  ],
-                ),
-              ),
-              PopupMenuItem(
-                value: 'export',
-                child: Row(
-                  children: [
-                    const Icon(Icons.file_download),
-                    const SizedBox(width: 8),
-                    Text('Exportar'),
-                  ],
-                ),
-              ),
-              const PopupMenuItem(height: 1, child: Divider()),
-              PopupMenuItem(
-                value: 'toggle_status',
-                child: Row(
-                  children: [
-                    Icon(
-                      customer.isActive ? Icons.block : Icons.check_circle,
-                      color: customer.isActive ? Colors.red : Colors.green,
-                    ),
-                    const SizedBox(width: 8),
-                    Text(customer.isActive ? 'Desactivar' : 'Activar'),
-                  ],
-                ),
-              ),
-              PopupMenuItem(
-                value: 'delete',
-                child: Row(
-                  children: [
-                    const Icon(Icons.delete, color: Colors.red),
-                    const SizedBox(width: 8),
-                    Text('Eliminar', style: TextStyle(color: Colors.red)),
-                  ],
-                ),
-              ),
-            ],
-            onSelected: (value) =>
-                _handleMenuAction(context, ref, value as String),
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _CustomerHeaderCard(customer: customer),
-            _CustomerInfoSection(customer: customer),
-            if (customer.hasCreditLimit) ...[
-              _CustomerCreditSection(customer: customer),
-            ],
-            _CustomerActionsSection(customer: customer),
-            if (customer.tags.isNotEmpty) ...[
-              _CustomerTagsSection(tags: customer.tags),
-            ],
-            _CustomerNotesSection(customer: customer),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _handleMenuAction(BuildContext context, WidgetRef ref, String action) {
-    switch (action) {
-      case 'edit':
-        _editCustomer(context, ref);
-        break;
-      case 'credit':
-        _manageCredit(context);
-        break;
-      case 'history':
-        _showTransactionHistory(context);
-        break;
-      case 'export':
-        _exportCustomer(context);
-        break;
-      case 'toggle_status':
-        _toggleCustomerStatus(context, ref);
-        break;
-      case 'delete':
-        _deleteCustomer(context, ref);
-        break;
-    }
-  }
-
-  void _editCustomer(BuildContext context, WidgetRef ref) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => _CustomerEditScreen(customer: customer),
-      ),
-    );
-  }
-
-  void _manageCredit(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => _CustomerCreditScreen(customer: customer),
-      ),
-    );
-  }
-
-  void _showTransactionHistory(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) =>
-            _CustomerTransactionHistoryScreen(customerId: customer.id),
-      ),
-    );
-  }
-
-  void _exportCustomer(BuildContext context) {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text('Exportación en desarrollo')));
-  }
-
-  void _toggleCustomerStatus(BuildContext context, WidgetRef ref) {
-    final newStatus = customer.isActive
-        ? CustomerStatus.inactive
-        : CustomerStatus.active;
-    final updatedCustomer = customer.copyWith(
-      isActive: !customer.isActive,
-      status: newStatus,
-    );
-
-    ref.read(customerNotifierProvider.notifier).updateCustomer(updatedCustomer);
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          customer.isActive ? 'Cliente desactivado' : 'Cliente activado',
-        ),
-      ),
-    );
-  }
-
-  void _deleteCustomer(BuildContext context, WidgetRef ref) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Eliminar Cliente'),
-        content: Text(
-          '¿Estás seguro de que quieres eliminar a ${customer.name}? Esta acción no se puede deshacer.',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Cancelar'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              ref
-                  .read(customerNotifierProvider.notifier)
-                  .deleteCustomer(customer.id);
-              Navigator.of(context).pop();
-              Navigator.of(context).pop();
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(CustomerConstants.customerDeletedMessage),
-                ),
-              );
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.red,
-              foregroundColor: Colors.white,
-            ),
-            child: const Text('Eliminar'),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _CustomerHeaderCard extends StatelessWidget {
-  final Customer customer;
-
-  const _CustomerHeaderCard({required this.customer});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-
     return Container(
       margin: const EdgeInsets.all(16),
       child: Card(
@@ -581,10 +354,12 @@ class _CustomerNotesSection extends StatelessWidget {
                 width: double.infinity,
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: colorScheme.surfaceVariant.withOpacity(0.3),
+                  color: colorScheme.surfaceContainerHighest.withValues(
+                    alpha: 0.3,
+                  ),
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                    color: colorScheme.outline.withOpacity(0.2),
+                    color: colorScheme.outline.withValues(alpha: 0.2),
                   ),
                 ),
                 child: Text(
@@ -592,7 +367,7 @@ class _CustomerNotesSection extends StatelessWidget {
                   style: theme.textTheme.bodyMedium?.copyWith(
                     color: customer.notes != null
                         ? colorScheme.onSurface
-                        : colorScheme.onSurface.withOpacity(0.6),
+                        : colorScheme.onSurface.withValues(alpha: 0.6),
                     fontStyle: customer.notes != null
                         ? FontStyle.normal
                         : FontStyle.italic,
@@ -625,7 +400,11 @@ class _InfoRow extends StatelessWidget {
 
     return Row(
       children: [
-        Icon(icon, size: 20, color: colorScheme.onSurface.withOpacity(0.6)),
+        Icon(
+          icon,
+          size: 20,
+          color: colorScheme.onSurface.withValues(alpha: 0.6),
+        ),
         const SizedBox(width: 12),
         Text(
           label,
@@ -638,7 +417,7 @@ class _InfoRow extends StatelessWidget {
           child: Text(
             value,
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: colorScheme.onSurface.withOpacity(0.8),
+              color: colorScheme.onSurface.withValues(alpha: 0.8),
             ),
             textAlign: TextAlign.right,
           ),
@@ -671,9 +450,9 @@ class _ActionButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: color.withOpacity(0.1),
+          color: color.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: color.withOpacity(0.3)),
+          border: Border.all(color: color.withValues(alpha: 0.3)),
         ),
         child: Column(
           children: [
@@ -709,22 +488,22 @@ class _CustomerTypeBadge extends StatelessWidget {
 
     switch (type) {
       case CustomerType.regular:
-        backgroundColor = Colors.blue.withOpacity(0.1);
+        backgroundColor = Colors.blue.withValues(alpha: 0.1);
         textColor = Colors.blue;
         text = CustomerConstants.customerTypeRegular;
         break;
       case CustomerType.vip:
-        backgroundColor = Colors.orange.withOpacity(0.1);
+        backgroundColor = Colors.orange.withValues(alpha: 0.1);
         textColor = Colors.orange;
         text = CustomerConstants.customerTypeVIP;
         break;
       case CustomerType.wholesale:
-        backgroundColor = Colors.green.withOpacity(0.1);
+        backgroundColor = Colors.green.withValues(alpha: 0.1);
         textColor = Colors.green;
         text = CustomerConstants.customerTypeWholesale;
         break;
       case CustomerType.corporate:
-        backgroundColor = Colors.purple.withOpacity(0.1);
+        backgroundColor = Colors.purple.withValues(alpha: 0.1);
         textColor = Colors.purple;
         text = CustomerConstants.customerTypeCorporate;
         break;
