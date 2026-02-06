@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../shared/models/customer_model.dart';
 import '../../shared/providers/customer_provider.dart';
-import '../../shared/providers/customer_credit_provider.dart';
 import 'widgets/customer_credit_info.dart';
-import 'widgets/customer_card.dart';
 import '../../core/constants/customer_constants.dart';
 import '../../core/theme/app_theme.dart';
 
