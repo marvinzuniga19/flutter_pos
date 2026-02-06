@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../shared/models/product_model.dart';
+import '../shared/providers/cart_provider.dart';
+import '../core/constants/cart_constants.dart';
 
-class ProductsScreen extends StatefulWidget {
+class ProductsScreen extends ConsumerWidget {
   const ProductsScreen({super.key});
 
   @override
-  State<ProductsScreen> createState() => _ProductsScreenState();
+  Widget build(BuildContext context, WidgetRef ref) {
+    return _ProductsScreenContent();
+  }
 }
 
-class _ProductsScreenState extends State<ProductsScreen> {
+class _ProductsScreenContent extends ConsumerWidget {
   final List<Product> _products = [
     Product(id: '1', name: 'Arroz blanco', price: 25.0),
     Product(id: '2', name: 'Frijoles', price: 18.0),
@@ -19,15 +24,18 @@ class _ProductsScreenState extends State<ProductsScreen> {
     Product(id: '7', name: 'Huevos', price: 12.0, ivaExempt: true),
   ];
 
-  void _addToCart(Product product) {
-    // Placeholder logic - presumably adds to a cart service in future
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text('${product.name} agregado')));
+  void _addToCart(Product product, BuildContext context, WidgetRef ref) {
+    ref.read(cartNotifierProvider.notifier).addItem(product);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('${product.name} ${CartConstants.itemAddedMessage}'),
+        duration: CartConstants.cartItemAnimationDuration,
+      ),
+    );
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
@@ -49,7 +57,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 return Card(
                   clipBehavior: Clip.antiAlias,
                   child: InkWell(
-                    onTap: () => _addToCart(product),
+                    onTap: () => _addToCart(product, context, ref),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [

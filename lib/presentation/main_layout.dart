@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pos/presentation/products_screen.dart';
+import 'package:pos/presentation/sales_screen.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key, this.child});
@@ -15,7 +16,7 @@ class _MainLayoutState extends State<MainLayout> {
 
   final List<Widget> _screens = const [
     ProductsScreen(), // Catálogo
-    PlaceholderScreen(title: 'Ventas', icon: Icons.shopping_cart),
+    SalesScreen(), // Ventas
     PlaceholderScreen(title: 'Inventario', icon: Icons.inventory),
     PlaceholderScreen(title: 'Clientes', icon: Icons.people),
     PlaceholderScreen(title: 'Reportes', icon: Icons.analytics),
