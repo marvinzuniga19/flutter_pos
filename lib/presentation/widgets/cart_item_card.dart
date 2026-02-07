@@ -246,7 +246,7 @@ class QuantitySelector extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
+              SizedBox(
                 width: CartConstants.quantitySelectorButtonSize.toDouble(),
                 height: CartConstants.quantitySelectorButtonSize.toDouble(),
                 child: IconButton(
@@ -275,7 +275,7 @@ class QuantitySelector extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-              Container(
+              SizedBox(
                 width: 36.0,
                 height: 36.0,
                 child: IconButton(

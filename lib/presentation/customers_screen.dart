@@ -107,6 +107,7 @@ class _CustomersScreenState extends ConsumerState<CustomersScreen>
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget _CustomerStatsHeader() {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
@@ -163,6 +164,7 @@ class _CustomersScreenState extends ConsumerState<CustomersScreen>
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget _StatsCard({
     required String title,
     required String value,
@@ -205,6 +207,7 @@ class _CustomersScreenState extends ConsumerState<CustomersScreen>
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget _SearchAndFilterSection() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
@@ -216,6 +219,7 @@ class _CustomersScreenState extends ConsumerState<CustomersScreen>
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget _CustomerList({required List<Customer> filter}) {
     final allCustomers = ref.watch(customerNotifierProvider);
     final searchResults = ref.watch(customerSearchNotifierProvider);
@@ -247,6 +251,7 @@ class _CustomersScreenState extends ConsumerState<CustomersScreen>
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget _EmptyState() {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;

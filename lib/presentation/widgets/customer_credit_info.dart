@@ -23,6 +23,7 @@ class CustomerCreditInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ignore: unused_local_variable
     final theme = Theme.of(context);
     final customerCredit = ref.watch(customerCreditProvider(customer.id));
     final transactions = ref.watch(
@@ -42,10 +43,10 @@ class CustomerCreditInfo extends ConsumerWidget {
           allowEdit: allowEdit,
         ),
         const SizedBox(height: 16),
-        _CreditOverview(customer: customer, credit: customerCredit!),
+        _CreditOverview(customer: customer, credit: customerCredit),
         if (showDetailedInfo) ...[
           const SizedBox(height: 16),
-          _CreditDetails(credit: customerCredit!),
+          _CreditDetails(credit: customerCredit),
         ],
         if (showTransactions && transactions.isNotEmpty) ...[
           const SizedBox(height: 16),
@@ -54,9 +55,9 @@ class CustomerCreditInfo extends ConsumerWidget {
             onViewAll: () => _showAllTransactions(context),
           ),
         ],
-        if (customerCredit!.isOverdue) ...[
+        if (customerCredit.isOverdue) ...[
           const SizedBox(height: 16),
-          _OverdueAlert(credit: customerCredit!),
+          _OverdueAlert(credit: customerCredit),
         ],
       ],
     );
@@ -84,7 +85,7 @@ class _NoCreditInfo extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: colorScheme.surfaceVariant.withValues(alpha: 0.3),
+        color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: colorScheme.outline.withValues(alpha: 0.2)),
       ),

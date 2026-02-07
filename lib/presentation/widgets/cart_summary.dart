@@ -464,13 +464,17 @@ class _DiscountDialogState extends State<DiscountDialog> {
             RadioListTile<DiscountType>(
               title: const Text('Porcentaje'),
               value: DiscountType.percentage,
+              // ignore: deprecated_member_use
               groupValue: _discountType,
+              // ignore: deprecated_member_use
               onChanged: (value) => setState(() => _discountType = value!),
             ),
             RadioListTile<DiscountType>(
               title: const Text('Monto Fijo'),
               value: DiscountType.fixed,
+              // ignore: deprecated_member_use
               groupValue: _discountType,
+              // ignore: deprecated_member_use
               onChanged: (value) => setState(() => _discountType = value!),
             ),
             const SizedBox(height: 16),

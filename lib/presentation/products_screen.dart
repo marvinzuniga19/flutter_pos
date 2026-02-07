@@ -207,7 +207,7 @@ class _ProductCard extends StatelessWidget {
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) {
                         return Container(
-                          color: colorScheme.surfaceVariant,
+                          color: colorScheme.surfaceContainerHighest,
                           child: Icon(
                             Icons.broken_image_outlined,
                             size: 48,
@@ -217,7 +217,7 @@ class _ProductCard extends StatelessWidget {
                       },
                     )
                   : Container(
-                      color: colorScheme.surfaceVariant,
+                      color: colorScheme.surfaceContainerHighest,
                       child: Icon(
                         Icons.shopping_bag_outlined,
                         size: 48,

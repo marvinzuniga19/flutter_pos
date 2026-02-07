@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../shared/models/customer_model.dart';
-import '../../shared/providers/customer_provider.dart';
 import 'widgets/customer_credit_info.dart';
 import '../../core/constants/customer_constants.dart';
 import '../../core/theme/app_theme.dart';
@@ -108,6 +107,7 @@ class CustomerDetailScreen extends ConsumerWidget {
   }
 }
 
+// ignore: unused_element
 class _CustomerInfoSection extends StatelessWidget {
   final Customer customer;
 
@@ -116,6 +116,7 @@ class _CustomerInfoSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    // ignore: unused_local_variable
     final colorScheme = theme.colorScheme;
 
     return Container(
@@ -164,6 +165,7 @@ class _CustomerInfoSection extends StatelessWidget {
   }
 }
 
+// ignore: unused_element
 class _CustomerCreditSection extends ConsumerWidget {
   final Customer customer;
 
@@ -183,6 +185,7 @@ class _CustomerCreditSection extends ConsumerWidget {
   }
 }
 
+// ignore: unused_element
 class _CustomerActionsSection extends StatelessWidget {
   final Customer customer;
 
@@ -276,6 +279,7 @@ class _CustomerActionsSection extends StatelessWidget {
   }
 }
 
+// ignore: unused_element
 class _CustomerTagsSection extends StatelessWidget {
   final List<String> tags;
 
@@ -325,6 +329,7 @@ class _CustomerTagsSection extends StatelessWidget {
   }
 }
 
+// ignore: unused_element
 class _CustomerNotesSection extends StatelessWidget {
   final Customer customer;
 
@@ -556,6 +561,7 @@ class _CustomerStatusIndicator extends StatelessWidget {
 }
 
 // Placeholder screens para las funcionalidades adicionales
+// ignore: unused_element
 class _CustomerEditScreen extends StatelessWidget {
   final Customer customer;
 
@@ -570,6 +576,7 @@ class _CustomerEditScreen extends StatelessWidget {
   }
 }
 
+// ignore: unused_element
 class _CustomerCreditScreen extends StatelessWidget {
   final Customer customer;
 
@@ -584,6 +591,7 @@ class _CustomerCreditScreen extends StatelessWidget {
   }
 }
 
+// ignore: unused_element
 class _CustomerTransactionHistoryScreen extends StatelessWidget {
   final String customerId;
 

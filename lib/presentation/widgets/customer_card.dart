@@ -55,7 +55,7 @@ class CustomerCard extends ConsumerWidget {
               if (showCreditInfo && customerCredit != null) ...[
                 _CustomerCreditSection(
                   customer: customer,
-                  credit: customerCredit!,
+                  credit: customerCredit,
                 ),
                 const SizedBox(height: 12),
               ],
@@ -86,13 +86,13 @@ class _CustomerHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+    final _ = theme.colorScheme;
 
     return Row(
       children: [
         CircleAvatar(
           radius: CustomerConstants.customerAvatarRadius,
-          backgroundColor: AppTheme.customerColor.withOpacity(0.1),
+          backgroundColor: AppTheme.customerColor.withValues(alpha: 0.1),
           child: Icon(Icons.person, color: AppTheme.customerColor, size: 24),
         ),
         const SizedBox(width: 12),
@@ -162,7 +162,7 @@ class _CustomerInfo extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
-        color: colorScheme.surfaceVariant.withOpacity(0.5),
+        color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
@@ -274,9 +274,9 @@ class _CreditInfoCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: color.withOpacity(0.3)),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -319,13 +319,13 @@ class _CreditUtilizationCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: (isHigh ? colorScheme.error : colorScheme.primary).withOpacity(
-          0.1,
+        color: (isHigh ? colorScheme.error : colorScheme.primary).withValues(
+          alpha: 0.1,
         ),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: (isHigh ? colorScheme.error : colorScheme.primary).withOpacity(
-            0.3,
+          color: (isHigh ? colorScheme.error : colorScheme.primary).withValues(
+            alpha: 0.3,
           ),
         ),
       ),
@@ -341,7 +341,7 @@ class _CreditUtilizationCard extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            utilization.toStringAsFixed(1) + '%',
+            '${utilization.toStringAsFixed(1)}%',
             style: theme.textTheme.titleSmall?.copyWith(
               color: isHigh ? colorScheme.error : colorScheme.primary,
               fontWeight: FontWeight.bold,
@@ -377,7 +377,7 @@ class _OverdueWarning extends StatelessWidget {
       decoration: BoxDecoration(
         color: colorScheme.errorContainer,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: colorScheme.error.withOpacity(0.3)),
+        border: Border.all(color: colorScheme.error.withValues(alpha: 0.3)),
       ),
       child: Row(
         children: [
@@ -443,7 +443,7 @@ class _CustomerActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+    final _ = theme.colorScheme;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
@@ -479,7 +479,7 @@ class _CustomerTypeBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+    final _ = theme.colorScheme;
 
     Color backgroundColor;
     Color textColor;
@@ -487,22 +487,22 @@ class _CustomerTypeBadge extends StatelessWidget {
 
     switch (type) {
       case CustomerType.regular:
-        backgroundColor = Colors.blue.withOpacity(0.1);
+        backgroundColor = Colors.blue.withValues(alpha: 0.1);
         textColor = Colors.blue;
         text = CustomerConstants.customerTypeRegular;
         break;
       case CustomerType.vip:
-        backgroundColor = Colors.orange.withOpacity(0.1);
+        backgroundColor = Colors.orange.withValues(alpha: 0.1);
         textColor = Colors.orange;
         text = CustomerConstants.customerTypeVIP;
         break;
       case CustomerType.wholesale:
-        backgroundColor = Colors.green.withOpacity(0.1);
+        backgroundColor = Colors.green.withValues(alpha: 0.1);
         textColor = Colors.green;
         text = CustomerConstants.customerTypeWholesale;
         break;
       case CustomerType.corporate:
-        backgroundColor = Colors.purple.withOpacity(0.1);
+        backgroundColor = Colors.purple.withValues(alpha: 0.1);
         textColor = Colors.purple;
         text = CustomerConstants.customerTypeCorporate;
         break;

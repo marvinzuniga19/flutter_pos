@@ -51,12 +51,15 @@ class _CategoryManagementScreenState
                   .addCategory(name);
 
               if (mounted) {
+                // ignore: use_build_context_synchronously
                 Navigator.pop(context);
                 if (success) {
+                  // ignore: use_build_context_synchronously
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('Categoría "$name" creada')),
                   );
                 } else {
+                  // ignore: use_build_context_synchronously
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text('Ya existe una categoría con ese nombre'),
@@ -109,12 +112,15 @@ class _CategoryManagementScreenState
                   .updateCategory(category.id, name);
 
               if (mounted) {
+                // ignore: use_build_context_synchronously
                 Navigator.pop(context);
                 if (success) {
+                  // ignore: use_build_context_synchronously
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Categoría actualizada')),
                   );
                 } else {
+                  // ignore: use_build_context_synchronously
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text('Ya existe una categoría con ese nombre'),
@@ -170,7 +176,9 @@ class _CategoryManagementScreenState
                   .deleteCategory(category.id);
 
               if (mounted) {
+                // ignore: use_build_context_synchronously
                 Navigator.pop(context);
+                // ignore: use_build_context_synchronously
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Categoría eliminada')),
                 );

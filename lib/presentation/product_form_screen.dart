@@ -249,7 +249,7 @@ class _ImageSection extends StatelessWidget {
                         height: 200,
                         width: 200,
                         decoration: BoxDecoration(
-                          color: colorScheme.surfaceVariant,
+                          color: colorScheme.surfaceContainerHighest,
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
                             color: colorScheme.outline,
@@ -373,7 +373,7 @@ class _BasicInfoSection extends ConsumerWidget {
               children: [
                 Expanded(
                   child: DropdownButtonFormField<String>(
-                    value: selectedCategory,
+                    initialValue: selectedCategory,
                     decoration: const InputDecoration(
                       labelText: 'Categoría',
                       border: OutlineInputBorder(),

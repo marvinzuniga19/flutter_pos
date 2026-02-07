@@ -80,6 +80,7 @@ class _CustomerSelectionModalState
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget _ModalHeader() {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
@@ -122,6 +123,7 @@ class _CustomerSelectionModalState
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget _ModalBody() {
     if (_isCreatingNew) {
       return _CreateNewCustomerForm();
@@ -145,6 +147,7 @@ class _CustomerSelectionModalState
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget _CreateNewCustomerForm() {
     return Expanded(
       child: Padding(
@@ -171,6 +174,7 @@ class _CustomerSelectionModalState
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget _CustomerList() {
     if (_searchResults.isEmpty && _searchController.text.isEmpty) {
       return _EmptySearchState();
@@ -195,6 +199,7 @@ class _CustomerSelectionModalState
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget _EmptySearchState() {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
@@ -235,6 +240,7 @@ class _CustomerSelectionModalState
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget _NoResultsState() {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
@@ -289,6 +295,7 @@ class _CustomerSelectionModalState
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget _ModalActions() {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
@@ -442,7 +449,7 @@ class _NewCustomerFormState extends State<_NewCustomerForm> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    Theme.of(context);
 
     return Form(
       key: _formKey,
@@ -471,7 +478,7 @@ class _NewCustomerFormState extends State<_NewCustomerForm> {
               children: [
                 Expanded(
                   child: DropdownButtonFormField<CustomerType>(
-                    value: _selectedType,
+                    initialValue: _selectedType,
                     decoration: const InputDecoration(
                       labelText: 'Tipo de Cliente',
                       border: OutlineInputBorder(),
